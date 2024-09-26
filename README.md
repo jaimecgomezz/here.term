@@ -1,6 +1,6 @@
 # here.term
 
-Use a single terminal instance as any other buffer. Toggle between the file you're editing and the terminal with a single command (`<C-;>`) and kill it just as easily (`<C-S-;>`).
+Use a single terminal instance as any other buffer. Toggle between the file you're editing and the terminal with a single command (`<C-;>`). Kill it just as easily (`<C-S-;>`).
 
 
 ## Installation
@@ -13,7 +13,7 @@ With [lazy](https://github.com/folke/lazy.nvim):
 }
 ```
 
-Please make sure you have set the `hidden` option in your config file, or the terminals will be discarded when toggled. 
+Please make sure you have set the `hidden` option in your config file or the terminal will be discarded when toggled. 
 ```lua
 vim.opt.hidden = true
 ```
@@ -25,8 +25,8 @@ Here are the default options:
 ```lua
 require("here-term").setup({
     -- The command we run when exiting the terminal and no other buffers are listed. An empty
-    -- buffer is shown by default
-    startup_command = "enew", -- Startify, Dashboard, etc...
+    -- buffer is shown by default. 
+    startup_command = "enew", -- Startify, Dashboard, etc. Make sure it has been loaded before `here.term`.
 
     -- Mappings
     -- Every mapping bellow can be customized by providing your prefered combo, or disabled
@@ -69,3 +69,22 @@ I've used most of the terminal solutions out there, tempted by the next shiny pl
 I now realize that that's ok, even ideal. Most of the complex stuff, like running local servers, compiling your code or any other background process can be perfectly handled by any of the incredible task runner solutions out there, like [overseer.nvim](https://github.com/stevearc/overseer.nvim), which is my goto. So, for the remaining everyday stuff, a single terminal instance that can be easily toggled, without needing to switch between windows or escaping it, or any other shenanigans, has come to be my favorite solution.
 
 If you decide to use `here.term` you can still spawn new terminals if you like, it won't interfere, you'll just have a special one that you can access at speed of light (:
+
+
+## My config
+
+- [vim-startify](https://github.com/mhinz/vim-startify): My preferred start page plugin.
+- [flatten.nvim](https://github.com/willothy/flatten.nvim): Prevent nesting terminal sessions withim neovim. Incredible stuff.
+
+```lua
+{
+    "jaimecgomezz/here.term",
+    dependencies = {
+        { "mhinz/vim-startify" },
+        { "willothy/flatten.nvim", config = true, priority = 1001, },
+    },
+    opts = { 
+        startup_command = "Startify",
+    },
+},
+```
