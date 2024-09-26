@@ -51,6 +51,28 @@ require("here-term").setup({
 })
 ```
 
+<details>
+<summary>My config</summary>
+
+
+- [vim-startify](https://github.com/mhinz/vim-startify): My preferred start page plugin.
+- [flatten.nvim](https://github.com/willothy/flatten.nvim): Prevent nesting terminal sessions withim neovim. Incredible stuff!
+
+```lua
+{
+    "jaimecgomezz/here.term",
+    dependencies = {
+        { "mhinz/vim-startify" },
+        { "willothy/flatten.nvim", config = true, priority = 1001, },
+    },
+    opts = { 
+        startup_command = "Startify",
+    },
+},
+
+```
+</details>
+
 ## Workflow
 
 1. Open any file you wish to edit.
@@ -69,22 +91,3 @@ I've used most of the terminal solutions out there, tempted by the next shiny pl
 I now realize that that's ok, even ideal. Most of the complex stuff, like running local servers, compiling your code or any other background process can be perfectly handled by any of the incredible task runner solutions out there, like [overseer.nvim](https://github.com/stevearc/overseer.nvim), which is my goto. So, for the remaining everyday stuff, a single terminal instance that can be easily toggled, without needing to switch between windows or escaping it, or any other shenanigans, has come to be my favorite solution.
 
 If you decide to use `here.term` you can still spawn new terminals if you like, it won't interfere, you'll just have a special one that you can access at speed of light (:
-
-
-## My config
-
-- [vim-startify](https://github.com/mhinz/vim-startify): My preferred start page plugin.
-- [flatten.nvim](https://github.com/willothy/flatten.nvim): Prevent nesting terminal sessions withim neovim. Incredible stuff.
-
-```lua
-{
-    "jaimecgomezz/here.term",
-    dependencies = {
-        { "mhinz/vim-startify" },
-        { "willothy/flatten.nvim", config = true, priority = 1001, },
-    },
-    opts = { 
-        startup_command = "Startify",
-    },
-},
-```
