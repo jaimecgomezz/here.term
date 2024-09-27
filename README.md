@@ -54,6 +54,22 @@ require("here-term").setup({
 ```
 
 <details>
+<summary>Lazy load</summary>
+
+```lua
+{
+    "jaimecgomezz/here.term",
+    opts = {},
+    keys = {
+        { '<C-;>', function() require("here-term").toggle_terminal() end, desc = "Toggle terminal" },
+        { '<C-S-;>', function() require("here-term").kill_terminal() end, desc = "Kill terminal" },
+    }
+},
+```
+</details>
+
+
+<details>
 <summary>My config</summary>
 
 
