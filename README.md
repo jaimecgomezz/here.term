@@ -2,6 +2,8 @@
 
 Use a single terminal instance as any other buffer. Toggle between the file you're editing and the terminal with a single command (`<C-;>`). Kill it just as easily (`<C-S-;>`).
 
+![here-term](https://github.com/user-attachments/assets/f11c1456-e299-4b17-9eb4-b710015b0c52)
+
 
 ## Installation
 
