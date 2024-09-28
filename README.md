@@ -12,11 +12,6 @@ With [lazy](https://github.com/folke/lazy.nvim):
 {
     "jaimecgomezz/here.term",
     opts = {},
-    -- Optional: Only if you wanna load the plugin lazily
-    keys = {
-        { '<C-;>', function() require("here-term").toggle_terminal() end, desc = "Toggle terminal", mode = { "n", "t" } },
-        { '<C-S-;>', function() require("here-term").kill_terminal() end, desc = "Kill terminal", mode = { "n", "t" } },
-    }
 }
 ```
 
@@ -36,7 +31,7 @@ require("here-term").setup({
     startup_command = "enew", -- Startify, Dashboard, etc. Make sure it has been loaded before `here.term`.
 
     -- Mappings
-    -- Every mapping bellow can be customized by providing your prefered combo, or disabled
+    -- Every mapping bellow can be customized by providing your preferred combo, or disabled
     -- entirely by setting them to `nil`.
     --
     -- The minimal mappings used to toggle and kill the terminal. Available in
@@ -57,13 +52,12 @@ require("here-term").setup({
     },
 })
 ```
-
 <details>
 <summary>My config</summary>
 
 
 - [vim-startify](https://github.com/mhinz/vim-startify): My preferred start page plugin.
-- [flatten.nvim](https://github.com/willothy/flatten.nvim): Prevent nesting terminal sessions withim neovim. Incredible stuff!
+- [flatten.nvim](https://github.com/willothy/flatten.nvim): Prevent nesting terminal sessions within Neovim. Incredible stuff!
 
 ```lua
 {
@@ -79,6 +73,18 @@ require("here-term").setup({
 
 ```
 </details>
+
+
+## API
+
+Additionally, you may want to toggle/kill the terminal manually or add extra keymaps through directly calling the
+following methods:
+
+```lua
+require("here-term").toggle_terminal()  -- <C-;>
+require("here-term").kill_terminal()    -- <C-S-;>
+```
+
 
 ## Workflow
 
