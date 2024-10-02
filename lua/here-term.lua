@@ -48,7 +48,7 @@ end
 
 local function enter_terminal(currbuff, here_termbuff)
 	-- Switch to existing terminal buffer
-	if vim.fn.buflisted(here_termbuff) == 1 then
+	if vim.fn.bufexists(here_termbuff) == 1 then
 		vim.cmd("silent buffer" .. here_termbuff)
 		vim.cmd.startinsert()
 	else
@@ -56,6 +56,7 @@ local function enter_terminal(currbuff, here_termbuff)
 		vim.cmd("silent terminal")
 
 		vim.g.here_termbuff = vim.api.nvim_get_current_buf()
+		vim.bo.buflisted = false
 		vim.cmd.startinsert()
 	end
 end
@@ -85,12 +86,12 @@ M.kill_terminal = function()
 		vim.g.here_prevbuff = vim.api.nvim_get_current_buf()
 	end
 
+	-- Go to our previous buffer
+	return_to_buffer(vim.g.here_prevbuff, vim.g.here_termbuff)
+
 	-- Wipe terminal
 	vim.cmd("silent! bdelete! " .. vim.g.here_termbuff)
 	vim.g.here_termbuff = nil
-
-	-- Go to our previous buffer
-	return_to_buffer(vim.g.here_prevbuff, vim.g.here_termbuff)
 end
 
 M.setup = function(opts)
