@@ -98,6 +98,7 @@ M.setup = function(opts)
 	opts = vim.tbl_extend("keep", opts or {}, {
 		startup_command = "enew",
 		mappings = {
+			enable = true,
 			toggle = "<C-;>",
 			kill = "<C-S-;>",
 		},
@@ -120,8 +121,10 @@ M.setup = function(opts)
 	end
 
 	-- here.term mappings
-	map({ "n", "i", "t" }, opts.mappings.toggle, M.toggle_terminal, "Toggle terminal")
-	map({ "n", "i", "t" }, opts.mappings.kill, M.kill_terminal, "Kill terminal")
+	if opts.mappings.enable then
+		map({ "n", "i", "t" }, opts.mappings.toggle, M.toggle_terminal, "Toggle terminal")
+		map({ "n", "i", "t" }, opts.mappings.kill, M.kill_terminal, "Kill terminal")
+	end
 
 	if opts.extra_mappings.enable then
 		-- Exit terminal

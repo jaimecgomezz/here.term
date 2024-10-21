@@ -37,6 +37,7 @@ require("here-term").setup({
     -- The minimal mappings used to toggle and kill the terminal. Available in
     -- `normal` and `terminal` mode.
     mappings = {
+        enable = true,
         toggle = "<C-;>",
         kill = "<C-S-;>",
     },
